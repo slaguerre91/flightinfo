@@ -4,7 +4,7 @@ $conn = require_once('../../models/user.php');
 $login = $conn->login($_POST);
 if ($login == "login failed") {
     $_SESSION["flash_message"] = "Invalid username or password.";
-    header("Location: ../../views/user/login.php");
+    header("Location: ../../views/user/login");
 } else {
     $_SESSION["user"] = $login["username"];
     $_SESSION["id"] = $login["Id"];
@@ -14,6 +14,6 @@ if ($login == "login failed") {
         header("Location: " . "../../views/" . $currUrl);
     } else {
         $_SESSION["flash_message"] = "Welcome back, " . $_SESSION["user"];
-        header("Location: ../../views/index.php");
+        header("Location: ../../views/index");
     }
 }

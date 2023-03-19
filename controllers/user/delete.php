@@ -7,8 +7,8 @@ if (isset($_SESSION["id"])) {
     $connUser->delete($_SESSION["id"]);
     //Delete user reviews
     $connReviews->deleteUserReviews($_SESSION["id"]);
-    header("Location: ../user/logout.php");
+    header("Location: ../user/logout");
 } else {
     $_SESSION["flash_message"] = "No logged in user";
-    header("Location: ../../views/error.php");
+    header("Location: ../../views/error");
 }

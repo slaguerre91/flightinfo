@@ -21,7 +21,7 @@ class Review
     public function getRecent()
     {
         try {
-            $sth = $this->dbh->prepare('SELECT * from review');
+            $sth = $this->dbh->prepare('SELECT * from review order by RAND() limit 12');
             $sth->execute();
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -34,14 +34,20 @@ class Review
     public function createNew($review)
     {
         try {
-            $sth = $this->dbh->prepare("insert into review(dep, arr, airline, author, review_text, rating, user_id) values (:dep, :arr, :airline, :author, :review_text, :rating, :user_id)");
+            date_default_timezone_set('UTC');
+            $sth = $this->dbh->prepare("insert into review(dep, arr, airline, author, review_text, rating, user_id, timestamp) values (:dep, :arr, :airline, :author, :review_text, :rating, :user_id, :timestamp)");
             $sth->bindValue('dep', htmlspecialchars($review['dep']));
             $sth->bindValue('arr', htmlspecialchars($review['arr']));
             $sth->bindValue('airline', htmlspecialchars($review['airline']));
             $sth->bindValue('author', htmlspecialchars($review['author']));
-            $sth->bindValue('review_text', htmlspecialchars($review['review_text']));
+            $sth->bindValue('review_text', strip_tags($review['review_text'], "<p>"));
             $sth->bindValue('rating', htmlspecialchars($review['rating']));
             $sth->bindValue('user_id', htmlspecialchars($review['id']));
+            if (empty($review["timestamp"])) {
+                $sth->bindValue('timestamp', date('Y-m-d H:i:s'));
+            } else {
+                $sth->bindValue('timestamp', $review['timestamp']);
+            }
             $sth->execute();
         } catch (PDOException $e) {
             print "Error!: database connection failed. Can't create new review." . "<br/>";
@@ -68,6 +74,22 @@ class Review
         try {
             $sth = $this->dbh->prepare('SELECT * from review where user_id = :user_id');
             $sth->bindValue('user_id', $user_id);
+            $sth->execute();
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            print "Error!: database connection failed. Can't gather user reviews." . "<br/>";
+            die();
+        }
+    }
+
+    public function getRouteReviews($route)
+    {
+        try {
+            $sth = $this->dbh->prepare('SELECT * from review where dep = :dep and arr = :arr and airline = :airline');
+            $sth->bindValue('dep', $route["dep"]);
+            $sth->bindValue('arr', $route["arr"]);
+            $sth->bindValue('airline', $route["airline"]);
             $sth->execute();
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -113,6 +135,21 @@ class Review
             $sth->execute();
         } catch (PDOException $e) {
             print "Error!: database connection failed. Can't delete review." . "<br/>";
+            die();
+        }
+    }
+
+    public function search($route)
+    {
+        try {
+            $sth = $this->dbh->prepare('SELECT airline, dep, arr, avg(rating) as rating, count(*) as review_count FROM review where dep = :dep and arr = :arr GROUP BY airline');
+            $sth->bindValue('dep', $route['dep']);
+            $sth->bindValue('arr', $route['arr']);
+            $sth->execute();
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            print "Error!: database connection failed. Can't show review." . "<br/>";
             die();
         }
     }

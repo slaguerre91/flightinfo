@@ -6,20 +6,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="navbar-brand" href="/FlightInfo/views/index.php">Home</a>
-                <a class="navbar-brand" href="">Search</a>
-                <a href="review/create.php" class="navbar-brand">Review A Trip</a>
-
+                <a class="navbar-brand" href="/FlightInfo/views/index">Home</a>
+                <a class="navbar-brand" href="/FlightInfo/views/review/search">Search</a>
+                <a href="/FlightInfo/views/review/create" class="navbar-brand">Review A Trip</a>
                 <?php if (isset($_SESSION["id"])) { ?>
-                    <a href="review/reviewsByUser.php?id=<?php echo $_SESSION["id"] ?>" class="navbar-brand">My Reviews</a>
+                    <a href="/FlightInfo/views/review/reviewsByUser?id=<?php echo $_SESSION["id"] ?>" class="navbar-brand">My Reviews</a>
                 <?php } ?>
+                <a href="/FlightInfo/views/admin/index" class="navbar-brand">Admin</a>
             </div>
         </div>
 
         <div>
             <?php if (!isset($_SESSION["user"])) { ?>
-                <a class="btn btn-primary" href="../views/user/login.php">Sign In</a>
-                <a class="btn btn-primary" href="../views/user/register.php">Sign Up</a>
+                <a class="btn btn-primary" href="../views/user/login">Sign In</a>
+                <a class="btn btn-primary" href="../views/user/register">Sign Up</a>
             <?php } else { ?>
                 <a class="btn btn-primary" href="/FlightInfo/controllers/user/logout.php">Sign Out</a>
             <?php } ?>

@@ -4,7 +4,7 @@ require_once('../partials/header.php');
 require_once('../../controllers/review/show.php');
 //Redirect to login page if user is not authenticated.
 if (!isset($_SESSION['user'])) {
-    $_SESSION["currUrl"] = "review/" . basename(__FILE__) . "?id=" . $_GET["id"];
+    $_SESSION["currUrl"] = "review/" . substr(basename(__FILE__), 0, -4) . "?id=" . $_GET["id"];
     header("Location: ../user/login.php");
     exit;
 }

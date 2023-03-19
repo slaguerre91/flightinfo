@@ -13,7 +13,7 @@ if (isset($_SESSION["user"])) {
         }
     } else {
         $_SESSION["flash_message"] = "No review id was provided in post request";
-        header("Location: ../../views/index.php");
+        header("Location: ../../views/index");
         exit;
     }
     // Check for other empty or invalid input fields
@@ -23,13 +23,13 @@ if (isset($_SESSION["user"])) {
     ) {
         echo "Invalid input data.";
         $_SESSION["flash_message"] = "Invalid input data.";
-        header("Location: ../../views/index.php");
+        header("Location: ../../views/index");
         exit();
     }
     // Update review
     if ($_SESSION["id"] == $review["user_id"]) {
         $conn->update($_POST);
-        header("Location: ../../views/review/show.php?id=" . $_POST["id"]);
+        header("Location: ../../views/review/show?id=" . $_POST["id"]);
     } else {
         echo "You can only update your own post.";
         exit;
@@ -37,5 +37,5 @@ if (isset($_SESSION["user"])) {
 }
 // Redirect to login page
 else {
-    header("Location: ../../views/user/login.php");
+    header("Location: ../../views/user/login");
 }

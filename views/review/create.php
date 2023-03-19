@@ -2,8 +2,8 @@
 session_start();
 //Redirect to login page if user is not logged authenticated.
 if (!isset($_SESSION['user'])) {
-    $_SESSION["currUrl"] = "review/" . basename(__FILE__);
-    header("Location: ../user/login.php");
+    $_SESSION["currUrl"] = "review/" . substr(basename(__FILE__), 0, -4);
+    header("Location: ../user/login");
     exit;
 }
 require_once('../partials/header.php');

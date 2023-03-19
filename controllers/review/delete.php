@@ -8,26 +8,26 @@ if (isset($_SESSION["user"])) {
         $review = $conn->show($_POST["id"]);
         if (empty($review)) {
             $_SESSION["flash_message"] = "Unable to perform. Please select a valid post to delete.";
-            header("Location: ../../views/error.php");
+            header("Location: ../../views/error.");
             exit();
         }
     } else {
         $_SESSION["flash_message"] = "No review id was provided in post request";
-        header("Location: ../../views/error.php");
+        header("Location: ../../views/error");
         exit();
     }
     // Delete review
     if ($_SESSION["id"] == $review["user_id"]) {
         $conn->delete($_POST["id"]);
-        header("Location: ../../views/index.php");
+        header("Location: ../../views/index");
     } else {
         $_SESSION["flash_message"] = "Not allowed. This is not your review.";
-        header("Location: ../../views/error.php");
+        header("Location: ../../views/error");
         exit();
     }
 }
 // Redirect to login page
 else {
     // header("Location: ../../views/user/login.php?id=" . $_POST["id"]);
-    header("Location: ../../views/user/login.php");
+    header("Location: ../../views/user/login");
 }
