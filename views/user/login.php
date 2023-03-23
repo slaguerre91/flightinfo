@@ -2,6 +2,7 @@
 session_start();
 require_once('../partials/header.php');
 ?>
+
 </head>
 
 <body>

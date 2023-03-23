@@ -33,7 +33,7 @@ require_once('../partials/header.php');
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
         $.ajax({
-            url: 'https://randomuser.me/api/?results=10',
+            url: 'https://randomuser.me/api/?results=100',
             dataType: 'json',
             success: function(data) {
                 for (let i = 0; i < 100; i++) {

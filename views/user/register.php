@@ -38,7 +38,7 @@ require_once('../partials/header.php');
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <div class="card">
                                 <div class="card-body py-5 px-md-5">
-                                    <form class="needs-validation" action="../../controllers/user/register.php" method="post" novalidate>
+                                    <form class="needs-validation" action="../../controllers/user/register.php" enctype="multipart/form-data" method="post" novalidate>
                                         <!-- Username input -->
                                         <div class="form-outline mb-4">
                                             <div class="input-group has-validation">
@@ -58,8 +58,12 @@ require_once('../partials/header.php');
                                             </div>
                                             <label class="form-label" for="password">Password</label>
                                         </div>
+
+                                        <!-- Thumbnail input -->
+                                        Select image to upload:
+                                        <input type="file" name="thumbnail">
                                         <!-- Submit button -->
-                                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                                        <button type="submit" value="Submit" name="submit" class="btn btn-primary btn-block mb-4">
                                             Sign Up
                                         </button>
                                     </form>

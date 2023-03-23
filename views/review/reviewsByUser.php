@@ -38,4 +38,13 @@ require_once('../partials/header.php');
             </div>
         </div>
     </section>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="reviewsByUser?id=<?php echo $review["user_id"] ?>&page=<?php echo (!empty($_GET["page"]) && $_GET["page"] != 1) ? $_GET["page"] - 1 : 1 ?>">Previous</a></li>
+            <?php for ($i = 1; $i <= ceil(count($totalReviews) / 10); $i++) { ?>
+                <li class="page-item"><a class="page-link" href="reviewsByUser?id=<?php echo $review["user_id"] ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
+            <?php } ?>
+            <li class="page-item"><a class="page-link" href="reviewsByUser?id=<?php echo $review["user_id"] ?>&page=<?php echo (!empty($_GET["page"]) && $_GET["page"] != ceil(count($totalReviews) / 10)) ? $_GET["page"] + 1 : 1 ?>">Next</a></li>
+        </ul>
+    </nav>
     <?php require_once('../partials/footer.php') ?>;

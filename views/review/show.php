@@ -2,6 +2,9 @@
 session_start();
 require_once('../../controllers/review/show.php');
 require_once('../partials/header.php');
+require_once(__DIR__ . "/../../controllers/helpers/cloudinary.php");
+
+$thumbnailURL = getURL($review["author"]);
 ?>
 </head>
 
@@ -32,29 +35,29 @@ require_once('../partials/header.php');
                 </article>
             </div>
             <!-- Side widgets-->
-            <div class="col-lg-4">
-                <!-- Route side widget-->
+            <div class="col-lg-2">
+                <!-- Route side widget
                 <div class="card mb-4">
                     <div class="card-header">Route Info</div>
                     <div class="card-body">You can put anything you want inside of these side widgets. They are easy to
                         use, and feature the Bootstrap 5 card component!</div>
-                </div>
+                </div> -->
                 <!-- User side widget-->
                 <div class="card mb-4">
-                    <div class="card-header">User Info</div>
-                    <div class="card-body">You can put anything you want inside of these side widgets. They are easy to
-                        use, and feature the Bootstrap 5 card component!</div>
+                    <div class="card-header"><?php echo $user["username"] ?></div>
+                    <div class="m-auto mt-1"><img class="rounded-circle" src="<?php echo $thumbnailURL ?>" alt=""></div>
+                    <div class="card-body"><a href="reviewsByUser?id=<?php echo $user["Id"] ?>">View my other reviews</a></div>
+                    <!-- Update and Delete review-->
+                    <?php if (isset($_SESSION["id"]) && $_SESSION["id"] == $review["user_id"]) { ?>
+                        <a href="update.php?id=<?php echo $review["id"] ?>" class="btn btn-primary"> Update </a>
+                        <form action="../../controllers/review/delete.php" method="post" class="d-inline-block">
+                            <input type="hidden" name="id" value="<?php echo $review["id"] ?>">
+                            <button class="btn btn-primary">
+                                Delete
+                            </button>
+                        </form>
+                    <?php } ?>
                 </div>
-                <!-- Update and Delete review-->
-                <?php if (isset($_SESSION["id"]) && $_SESSION["id"] == $review["user_id"]) { ?>
-                    <a href="update.php?id=<?php echo $review["id"] ?>" class="btn btn-primary"> Update </a>
-                    <form action="../../controllers/review/delete.php" method="post" class="d-inline-block">
-                        <input type="hidden" name="id" value="<?php echo $review["id"] ?>">
-                        <button class=" btn btn-primary">
-                            Delete
-                        </button>
-                    </form>
-                <?php } ?>
             </div>
         </div>
     </div>

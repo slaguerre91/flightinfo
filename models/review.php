@@ -21,7 +21,7 @@ class Review
     public function getRecent()
     {
         try {
-            $sth = $this->dbh->prepare('SELECT * from review order by RAND() limit 12');
+            $sth = $this->dbh->prepare('SELECT * from review order by RAND() limit 6');
             $sth->execute();
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -72,8 +72,13 @@ class Review
     public function getUserReviews($user_id)
     {
         try {
-            $sth = $this->dbh->prepare('SELECT * from review where user_id = :user_id');
+            $limit = !empty($_POST["limit-records"]) ? $_POST["limit-records"] : 10;
+            $page = !empty($_GET['page']) ? $_GET['page'] : 1;
+            $start = ($page - 1) * $limit;
+            $sth = $this->dbh->prepare('SELECT * from review where user_id = :user_id  limit :startVal, :limitVal');
             $sth->bindValue('user_id', $user_id);
+            $sth->bindValue('startVal', $start, PDO::PARAM_INT);
+            $sth->bindValue('limitVal', $limit, PDO::PARAM_INT);
             $sth->execute();
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -86,6 +91,27 @@ class Review
     public function getRouteReviews($route)
     {
         try {
+            $limit = !empty($_POST["limit-records"]) ? $_POST["limit-records"] : 10;
+            $page = !empty($_GET['page']) ? $_GET['page'] : 1;
+            $start = ($page - 1) * $limit;
+            $sth = $this->dbh->prepare('SELECT * from review where dep = :dep and arr = :arr and airline = :airline limit :startVal, :limitVal');
+            $sth->bindValue('dep', $route["dep"]);
+            $sth->bindValue('arr', $route["arr"]);
+            $sth->bindValue('airline', $route["airline"]);
+            $sth->bindValue('startVal', $start, PDO::PARAM_INT);
+            $sth->bindValue('limitVal', $limit, PDO::PARAM_INT);
+            $sth->execute();
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            print "Error!: database connection failed. Can't gather route reviews." . "<br/>";
+            die();
+        }
+    }
+
+    public function getTotalRouteReviews($route)
+    {
+        try {
             $sth = $this->dbh->prepare('SELECT * from review where dep = :dep and arr = :arr and airline = :airline');
             $sth->bindValue('dep', $route["dep"]);
             $sth->bindValue('arr', $route["arr"]);
@@ -94,11 +120,24 @@ class Review
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't gather user reviews." . "<br/>";
+            print "Error!: database connection failed. Can't gather route reviews." . "<br/>";
             die();
         }
     }
 
+    public function getTotalUserReviews($user_id)
+    {
+        try {
+            $sth = $this->dbh->prepare('SELECT * from review where user_id= :user_id');
+            $sth->bindValue('user_id', $user_id);
+            $sth->execute();
+            $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            print "Error!: database connection failed. Can't gather route reviews." . "<br/>";
+            die();
+        }
+    }
     public function update($review)
     {
         try {

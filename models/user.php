@@ -47,11 +47,10 @@ class User
             if ($sth->rowCount() > 0) {
                 $result = "User already exists";
             } else {
-                $sth = $this->dbh->prepare("insert into User(username, password, thumbnail) values (:username, :password, :thumbnail)");
+                $sth = $this->dbh->prepare("insert into User(username, password) values (:username, :password)");
                 $hash = password_hash($user["password"], PASSWORD_DEFAULT);
                 $sth->bindValue('username', htmlspecialchars($user['username']));
                 $sth->bindValue('password', $hash);
-                $sth->bindValue('thumbnail', htmlspecialchars($user['thumbnail']));
                 $sth->execute();
                 $sth = $this->dbh->prepare("select * from User where Id = :id");
                 $id = $this->dbh->lastInsertId();
@@ -62,6 +61,20 @@ class User
             return $result;
         } catch (PDOException $e) {
             print "Error!: database connection failed. Can't register user." . "<br/>";
+            die();
+        }
+    }
+
+    public function show($id)
+    {
+        try {
+            $sth = $this->dbh->prepare("select * from User where id = :id");
+            $sth->bindValue('id', $id);
+            $sth->execute();
+            $result = $sth->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            print "Error!: database connection failed. Can't lookup user." . "<br/>";
             die();
         }
     }
@@ -80,6 +93,7 @@ class User
 
     public function seedUsers($users)
     {
+        //IMPORTANT - Should only be accessible to Admin user. 
         $currUser[] = [];
         for ($i = 0; $i < count($users["username"]); $i++) {
             $currUser["username"] = $users["username"][$i];
