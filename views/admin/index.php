@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once('../partials/header.php');
+if ($_SESSION["user"] !== "administrator") {
+    header("Location: ../user/login");
+}
 ?>
 </head>
 

@@ -21,7 +21,7 @@ class Review
     public function getRecent()
     {
         try {
-            $sth = $this->dbh->prepare('SELECT * from review order by RAND() limit 6');
+            $sth = $this->dbh->prepare('SELECT * from review order by RAND() limit 12');
             $sth->execute();
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
@@ -35,11 +35,12 @@ class Review
     {
         try {
             date_default_timezone_set('UTC');
-            $sth = $this->dbh->prepare("insert into review(dep, arr, airline, author, review_text, rating, user_id, timestamp) values (:dep, :arr, :airline, :author, :review_text, :rating, :user_id, :timestamp)");
+            $sth = $this->dbh->prepare("insert into review(dep, arr, airline, author, summary, review_text, rating, user_id, timestamp) values (:dep, :arr, :airline, :author, :summary, :review_text, :rating, :user_id, :timestamp)");
             $sth->bindValue('dep', htmlspecialchars($review['dep']));
             $sth->bindValue('arr', htmlspecialchars($review['arr']));
             $sth->bindValue('airline', htmlspecialchars($review['airline']));
             $sth->bindValue('author', htmlspecialchars($review['author']));
+            $sth->bindValue('summary', strip_tags($review['summary'], "<p>"));
             $sth->bindValue('review_text', strip_tags($review['review_text'], "<p>"));
             $sth->bindValue('rating', htmlspecialchars($review['rating']));
             $sth->bindValue('user_id', htmlspecialchars($review['id']));
@@ -141,12 +142,10 @@ class Review
     public function update($review)
     {
         try {
-            $sth = $this->dbh->prepare("update review set dep = :dep, arr = :arr, airline = :airline, review_text = :review_text, rating = :rating where id = :id");
+            $sth = $this->dbh->prepare("update review set summary = :summary, review_text = :review_text, rating = :rating where id = :id");
             $sth->bindValue('id', htmlspecialchars($review['id']));
-            $sth->bindValue('dep', htmlspecialchars($review['dep']));
-            $sth->bindValue('arr', htmlspecialchars($review['arr']));
-            $sth->bindValue('airline', htmlspecialchars($review['airline']));
-            $sth->bindValue('review_text', htmlspecialchars($review['review_text']));
+            $sth->bindValue('summary', strip_tags($review['summary'], "<p>"));
+            $sth->bindValue('review_text', strip_tags($review['review_text'], "<p>"));
             $sth->bindValue('rating', htmlspecialchars($review['rating']));
             $sth->execute();
         } catch (PDOException $e) {

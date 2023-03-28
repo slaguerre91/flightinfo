@@ -24,14 +24,10 @@ require_once('../partials/header.php');
                     <div class="row gx-lg-5 align-items-center">
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <h1 class="my-5 display-3 fw-bold ls-tight">
-                                The best offer <br />
-                                <span class="text-primary">for your business</span>
+                                Book your trip <br />
+                                <span class="text-primary">with confidence</span>
                             </h1>
-                            <p style="color: hsl(217, 10%, 50.8%)">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-                                quibusdam tempora at cupiditate quis eum maiores libero
-                                veritatis? Dicta facilis sint aliquid ipsum atque?
+                            <p style="color: hsl(217, 10%, 50.8%)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, itaque accusantium odio, soluta, corrupti aliquam quibusdam tempora at cupiditate quis eum maiores libero veritatis? Dicta facilis sint aliquid ipsum atque?
                             </p>
                         </div>
 
@@ -42,28 +38,29 @@ require_once('../partials/header.php');
                                         <!-- Username input -->
                                         <div class="form-outline mb-4">
                                             <div class="input-group has-validation">
-                                                <input type="text" id="username" class="form-control" name="username" minlength="6" required>
+                                                <input type="text" id="username" class="form-control" name="username" minlength="6" aria-label="username" placeholder="Username" required>
                                                 <div class="invalid-feedback">
                                                     Please enter a valid username (min. length 6 characters).
                                                 </div>
                                             </div>
-                                            <label class="form-label" for="username">Username</label>
                                         </div>
 
                                         <!-- Password input -->
                                         <div class="form-outline mb-4">
-                                            <input type="password" id="password" class="form-control" name="password" minlength="6" required>
-                                            <div class="invalid-feedback">
-                                                Please enter a valid username (min. length 6 characters).
+                                            <div class="input-group has-validation">
+                                                <input type="password" id="password" class="form-control" name="password" minlength="6" aria-label="password" placeholder="Password" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid username (min. length 6 characters).
+                                                </div>
                                             </div>
-                                            <label class="form-label" for="password">Password</label>
                                         </div>
 
                                         <!-- Thumbnail input -->
                                         Select image to upload:
-                                        <input type="file" name="thumbnail">
+                                        <label for="formFile" class="thumbnail-label">Default file input example</label>
+                                        <input class="form-control" name="thumbnail" type="file" id="thumbnail">
                                         <!-- Submit button -->
-                                        <button type="submit" value="Submit" name="submit" class="btn btn-primary btn-block mb-4">
+                                        <button type="submit" value="Submit" name="submit" class="btn btn-primary btn-block  mt-4 mb-4">
                                             Sign Up
                                         </button>
                                     </form>

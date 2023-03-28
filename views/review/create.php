@@ -14,30 +14,41 @@ require_once('../partials/header.php');
 <body>
     <?php
     require_once('../partials/nav.php');
-    ?>
+    if (isset($_SESSION["flash_message"])) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION["flash_message"] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php
+        unset($_SESSION["flash_message"]);
+        ?>
+    <?php } ?>
     <div class="container">
         <form class="needs-validation" action="../../controllers/review/create.php" method="post" novalidate>
             <div class="form-group">
                 <input type="hidden" name="author" value="<?php echo $_SESSION["user"] ?>">
                 <input type="hidden" name="id" value="<?php echo $_SESSION["id"] ?>">
-                <label for="dep"> Origin</label>
-                <input type="text" class="form-control" name="dep" id="dep" placeholder="Search city or airport code" required>
+                <input type="text" class="form-control my-2" name="dep" id="dep" placeholder="Origin" aria-label="origin" required>
                 <div class="invalid-feedback">
                     Field can't be empty
                 </div>
-                <label for="arr">Destination</label>
-                <input type="text" class="form-control" name="arr" id="arr" placeholder="Search city or airport code" required>
+                <input type="text" class="form-control my-2" name="arr" id="arr" placeholder="Destination" aria-label="destination" required>
                 <div class="invalid-feedback">
                     Field can't be empty
                 </div>
-                <label for="airline">Airline</label>
-                <input type="text" class="form-control" name="airline" id="airline" placeholder="Search airline name" required>
+                <input type="text" class="form-control my-2" name="airline" id="airline" placeholder="Airline" aria-label="airline" required>
                 <div class="invalid-feedback">
                     Field can't be empty
                 </div>
                 <div class="mb-3">
-                    <label for="review" class="form-label">Your review</label>
-                    <textarea class="form-control" name="review_text" id="review" rows="3" placeholder="Your review" required></textarea>
+                    <textarea class="form-control my-2" name="summary" id="summary" rows="3" placeholder="Summary" aria-label="summary" maxlength="75" required></textarea>
+                    <small class="form-text text-muted">0 characters remaining</small>
+                    <div class="invalid-feedback">
+                        Field can't be empty
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control my-2" name="review_text" id="review" rows="3" placeholder="Your review" aria-label="review" required></textarea>
                     <div class="invalid-feedback">
                         Field can't be empty
                     </div>
@@ -45,7 +56,6 @@ require_once('../partials/header.php');
                 <div class="star-rating">
                     <input type="radio" class="form-control" name="rating" id="star-a" value="5" required>
                     <label for="star-a"></label>
-
                     <input type="radio" name="rating" id="star-b" value="4" required>
                     <label for="star-b"></label>
 
@@ -64,9 +74,11 @@ require_once('../partials/header.php');
             </div>
         </form>
     </div>
-    <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
+
+    <!-- <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="../js/scripts.js"></script>
     <?php
     require_once('../partials/footer.php');
     ?>

@@ -1,6 +1,6 @@
 .features-icons {
   padding-top: 7rem;
-  padding-bottom: 7rem;
+  padding-bottom: 16.5rem;
 }
 
 .features-icons .features-icons-item {
@@ -153,4 +153,74 @@ footer.footer {
 
 .checked {
   color: orange;
+}
+
+p {
+  white-space: pre-wrap;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+#content {
+  min-height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+}
+
+#beach-chair {
+  height: auto;
+  width: 100%;
+}
+
+#summary {
+  font-style: italic;
+}
+
+.btn-primary {
+  background-color: #F36A68 !important;
+  border-color: #F36A68 !important;
+}
+
+.btn-primary:hover {
+  background-color: #ef4643 !important;
+  border-color: #ef4643 !important;
+}
+
+.text-primary {
+  color: #F36A68 !important;
+}
+
+.navbar-brand:hover {
+  color: #EF9C43 !important;
+}
+
+img {
+  padding: none;
+}
+
+#count_message {
+  background-color: smoke;
+  margin-top: -20px;
+  margin-right: 5px;
+}
+
+.navbar-toggler:focus {
+
+  box-shadow: none !important;
+}
+
+.navbar-toggler {
+  border: 0 !important;
 }

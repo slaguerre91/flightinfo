@@ -22,30 +22,23 @@ if ($_SESSION["id"] !== $review["user_id"]) {
     <?php
     require_once('../partials/nav.php');
     ?>
-    <div class="container">
+    <div class="container py-5">
         <form class="needs-validation" action=" ../../controllers/review/update.php" method="post" novalidate>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo $review["id"] ?>">
-                <label for="dep">Departure Airport</label>
-                <input type="text" class="form-control" name="dep" id="dep" value="<?php echo $review["dep"] ?>" required>
+                <h3 class="fw-bolder mb-1"><?php echo $review["dep"] . " to " . $review["arr"] ?></h3>
+                <p><?php echo $review["airline"] ?></p>
                 <div class="invalid-feedback">
                     Field can't be empty
                 </div>
-                <label for="arr">Arrival Airport</label>
-                <input type="text" class="form-control" name="arr" id="arr" value="<?php echo $review["arr"] ?>" required>
-                <div class="invalid-feedback">
-                    Field can't be empty
-                </div>
-                <label for="airline">Airline</label>
-                <input type="text" class="form-control" name="airline" id="airline" value="<?php echo $review["airline"] ?>" required>
-                <div class="invalid-feedback">
-                    Field can't be empty
+                <div class="mb-3">
+                    <textarea class="form-control my-2" name="summary" id="summary" rows="3" placeholder="Summary" aria-label="summary" required><?php echo $review["summary"] ?></textarea>
+                    <div class="invalid-feedback">
+                        Field can't be empty
+                    </div>
                 </div>
                 <div>
-                    <div>
-                        <label for="review">Review</label>
-                    </div>
-                    <textarea class="form-control" rows="5" cols="33" name="review_text" id="review" required><?php echo $review["review_text"] ?></textarea>
+                    <textarea class="form-control" rows="5" cols="33" name="review_text" id="review" placeholder="Review" aria-label="Review" required><?php echo $review["review_text"] ?></textarea>
                     <div class="invalid-feedback">
                         Field can't be empty
                     </div>

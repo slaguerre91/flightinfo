@@ -1,3 +1,38 @@
+$(document).ready(function () {
+    function markRequired() {
+        var control = $(this).children(".form-control");
+        var label = $(this).children("label");
+        if (control.attr("required") == "required") {
+            label.addClass("required");
+        }
+    }
+
+    function countCharacters() {
+        var max = $(this).attr("maxlength");
+        var length = $(this).val().length;
+        var counter = max - length;
+        var helper = $(this).next(".form-text");
+        if (counter !== 1) {
+            helper.text(counter + " characters remaining");
+        } else {
+            helper.text(counter + " character remaining");
+        }
+        if (counter === 0) {
+            helper.removeClass("text-muted");
+            helper.addClass("text-danger");
+        } else {
+            helper.removeClass("text-danger");
+            helper.addClass("text-muted");
+        }
+    }
+
+    $(document).ready(function () {
+        $(".form-group").each(markRequired);
+        $(".form-control").each(countCharacters);
+        $(".form-control").keyup(countCharacters);
+    });
+});
+
 jQuery(document).ready((function () {
     let availableTags = [];
     $(async function () {
@@ -24,7 +59,7 @@ jQuery(document).ready((function () {
             source: airlineResults
         });
     });
-}))
+}));
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 jQuery(document).ready((function () {
@@ -45,5 +80,7 @@ jQuery(document).ready((function () {
                 form.classList.add('was-validated')
             }, false)
         })
-})())
+})());
+
+
 
