@@ -13,8 +13,9 @@ class Review
         try {
             $this->dbh = new PDO('mysql:host=' . $_ENV['MY_SQL_HOST'] . ';dbname=' . $_ENV['MY_SQL_DBNAME'], $_ENV['MY_SQL_USER'], $_ENV['MY_SQL_PASSWORD']);
         } catch (PDOException $e) {
-            print "Error!: database connection failed" . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -26,8 +27,9 @@ class Review
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't populate index" . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -51,8 +53,9 @@ class Review
             }
             $sth->execute();
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't create new review." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -65,15 +68,16 @@ class Review
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't show review." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: ../../views/error");
+            exit;
         }
     }
 
     public function getUserReviews($user_id)
     {
         try {
-            $limit = !empty($_POST["limit-records"]) ? $_POST["limit-records"] : 10;
+            $limit = !empty($_POST["limit-records"]) ? $_POST["limit-records"] : 12;
             $page = !empty($_GET['page']) ? $_GET['page'] : 1;
             $start = ($page - 1) * $limit;
             $sth = $this->dbh->prepare('SELECT * from review where user_id = :user_id  limit :startVal, :limitVal');
@@ -84,15 +88,16 @@ class Review
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't gather user reviews." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
     public function getRouteReviews($route)
     {
         try {
-            $limit = !empty($_POST["limit-records"]) ? $_POST["limit-records"] : 10;
+            $limit = !empty($_POST["limit-records"]) ? $_POST["limit-records"] : 12;
             $page = !empty($_GET['page']) ? $_GET['page'] : 1;
             $start = ($page - 1) * $limit;
             $sth = $this->dbh->prepare('SELECT * from review where dep = :dep and arr = :arr and airline = :airline limit :startVal, :limitVal');
@@ -105,8 +110,9 @@ class Review
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't gather route reviews." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -121,8 +127,9 @@ class Review
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't gather route reviews." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -135,8 +142,9 @@ class Review
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't gather route reviews." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
     public function update($review)
@@ -149,8 +157,9 @@ class Review
             $sth->bindValue('rating', htmlspecialchars($review['rating']));
             $sth->execute();
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't update review." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -161,8 +170,9 @@ class Review
             $sth->bindValue('id', $id);
             $sth->execute();
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't delete review." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
     public function deleteUserReviews($user_id)
@@ -172,8 +182,9 @@ class Review
             $sth->bindValue('user_id', $user_id);
             $sth->execute();
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't delete review." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -187,8 +198,9 @@ class Review
             $result = $sth->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't show review." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 }

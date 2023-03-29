@@ -5,19 +5,11 @@ require_once(__DIR__ . '/../helpers/airlinepicker.php');
 // require_once(__DIR__ . '/../helpers/validate.php');
 require_once(__DIR__ . '/../helpers/ratingpicker.php');
 
-// Validate user input
-// if (
-//     empty($_GET["dep"]) || empty($_GET["arr"]) || !validateAirports($_GET["dep"], $_GET["arr"])
-// ) {
-//     $_SESSION["flash_message"] = "Invalid input data.";
-//     header("Location: ../../views/error");
-//     exit();
-// }
-// Pick 1-10 random airlines
+// Pick 3-10 random airlines
 $airlineCount = rand(3, 10);
 for ($x = 0; $x < $airlineCount; $x++) {
     $airline = pickAirline();
-    // Create 3 - 20 reviews for airline
+    // Create 20 - 50 reviews for airline
     $reviewCount = mt_rand(20, 50);
     for ($i = 0; $i < $reviewCount; $i++) {
         // Generate random review data

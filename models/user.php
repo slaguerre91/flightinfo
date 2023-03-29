@@ -13,8 +13,9 @@ class User
         try {
             $this->dbh = new PDO('mysql:host=' . $_ENV['MY_SQL_HOST'] . ';dbname=' . $_ENV['MY_SQL_DBNAME'], $_ENV['MY_SQL_USER'], $_ENV['MY_SQL_PASSWORD']);
         } catch (PDOException $e) {
-            print "Error!: database connection failed." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -34,8 +35,9 @@ class User
             }
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't login" . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
     public function register($user)
@@ -60,8 +62,9 @@ class User
             }
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't register user." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -74,8 +77,9 @@ class User
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't lookup user." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -86,8 +90,9 @@ class User
             $sth->bindValue('id', $id);
             $sth->execute();
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't delete user." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 
@@ -112,8 +117,9 @@ class User
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            print "Error!: database connection failed. Can't delete user." . "<br/>";
-            die();
+            $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
+            header("Location: /flightinfo/views/error.php");
+            exit;
         }
     }
 }

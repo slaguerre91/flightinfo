@@ -37,16 +37,16 @@ require_once('partials/header.php');
                 <?php foreach ($recentReviews as $review) { ?>
                     <div class="col-lg-4 mb-3">
                         <div class="card mx-auto h-100" style="width: 18rem;">
-                            <div class="card-body h-100">
+                            <div class="card-body d-flex flex-column">
                                 <h5 class="card-title h-25"><?php echo $review["dep"] . " to " . $review["arr"] ?></h5>
                                 <!-- Rating -->
-                                <?php for ($x = 0; $x <= 4; $x++) { ?>
-                                    <span class="fa fa-star mt-4 pt-2 <?php if ($review["rating"] > $x) echo 'checked' ?>"></span>
-                                <?php } ?>
-                                <p class="card-summary h-25"><?php echo $review["summary"] ?></p>
-                                <div class="mt-4">
-                                    <a class="btn btn-primary" href="review/show.php?id=<?php echo $review['id'] ?>">Read More</a>
+                                <div class="mt-5">
+                                    <?php for ($x = 0; $x <= 4; $x++) { ?>
+                                        <span class="fa fa-star mt-4 pt-2 <?php if ($review["rating"] > $x) echo 'checked' ?>"></span>
+                                    <?php } ?>
                                 </div>
+                                <p class="card-summary"><?php echo $review["summary"] ?></p>
+                                <a class="btn btn-primary mt-auto align-self-end mx-auto" href="review/show.php?id=<?php echo $review['id'] ?>">Read More</a>
                             </div>
                         </div>
                     </div>

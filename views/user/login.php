@@ -28,7 +28,7 @@ require_once('../partials/header.php');
                                 Book your trip <br />
                                 <span class="text-primary">with confidence</span>
                             </h1>
-                            <p style="color: hsl(217, 10%, 50.8%)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, itaque accusantium odio, soluta, corrupti aliquam quibusdam tempora at cupiditate quis eum maiores libero veritatis? Dicta facilis sint aliquid ipsum atque?
+                            <p style="color: hsl(217, 10%, 50.8%)">Browse real flight data before your next trip. No matter the airline or airport, see what your fellow travelers think and make a more informed decision. You can also create an account and share your thoughts on your last trip!
                             </p>
                         </div>
 

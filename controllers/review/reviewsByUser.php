@@ -7,3 +7,8 @@ if (empty($totalReviews)) {
     header("Location: ../../views/");
     exit();
 }
+if (empty($reviews)) {
+    $_SESSION["flash_message"]  = "Invalid Request";
+    header("Location: ../../views/");
+    exit();
+}

@@ -8,7 +8,8 @@ if (isset($_SESSION["user"])) {
     if (isset($_POST["id"])) {
         $review = $conn->show($_POST["id"]);
         if (empty($review)) {
-            echo "Review id " . $_POST["id"] . " is empty or does not exist";
+            $_SESSION["flash_message"] = "Review id " . $_POST["id"] . " is empty or does not exist";
+            header("Location: ../../views/index");
             exit;
         }
     } else {
@@ -29,7 +30,8 @@ if (isset($_SESSION["user"])) {
         $conn->update($_POST);
         header("Location: ../../views/review/show?id=" . $_POST["id"]);
     } else {
-        echo "You can only update your own post.";
+        $_SESSION["flash_message"] = "You can only update your own post.";
+        header("Location: ../../views/index");
         exit;
     }
 }

@@ -18,7 +18,7 @@
                 </li>
                 <?php if (isset($_SESSION["id"])) { ?>
                     <li>
-                        <a href="/FlightInfo/views/review/reviewsByUser?id=<?php echo $_SESSION["id"] ?>" class="navbar-brand">My Reviews</a>
+                        <a href="/FlightInfo/views/review/reviewsByUser?id=<?php echo $_SESSION["id"] ?>&page=1" class="navbar-brand">My Reviews</a>
                     </li>
                 <?php } ?>
                 <?php if (!isset($_SESSION["user"])) { ?>
@@ -45,8 +45,8 @@
             </ul>
         </div>
         <?php if (!isset($_SESSION["user"])) { ?>
-            <a class="btn btn-primary d-none d-lg-inline-block mx-2" href="/FlightInfo/views/user/login">Sign In</a>
-            <a class="btn btn-primary d-none d-lg-inline-block mx-2" href="/FlightInfo/views/user/register">Sign Up</a>
+            <a class="btn btn-primary d-none d-lg-inline-block mx-2 navbutton" href="/FlightInfo/views/user/login">Sign In</a>
+            <a class="btn btn-primary d-none d-lg-inline-block mx-2 navbutton" href="/FlightInfo/views/user/register">Sign Up</a>
         <?php } else { ?>
             <a class="navbar-brand d-none d-lg-inline-block" href="/FlightInfo/views/user/user">My Account</a>
             <a class="btn btn-primary d-none d-lg-inline-block" href="/FlightInfo/controllers/user/logout.php">Sign Out</a>
