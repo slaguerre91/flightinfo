@@ -3,6 +3,7 @@ session_start();
 require_once('../../controllers/review/show.php');
 require_once('../partials/header.php');
 require_once(__DIR__ . "/../../controllers/helpers/cloudinary.php");
+require_once(__DIR__ . '/../../controllers/helpers/airlinelogo.php');
 
 $thumbnailURL = getURL($review["author"]);
 ?>
@@ -14,15 +15,18 @@ $thumbnailURL = getURL($review["author"]);
     ?>
     <!-- Page content-->
     <div class="container mt-5 bg-light">
+        <div class="d-flex mb-3">
+            <img src="<?php echo getLogo($review["airline"]) ?>" alt="logo">
+            <h3 class="align-self-center mx-2"><?php echo $review["airline"] ?></h3>
+        </div>
         <div class="row">
             <div class="col-lg-8">
                 <!-- Post content-->
                 <article>
                     <!-- Post header-->
                     <header class="mb-4">
-                        <h1 class="fw-bolder mb-1"><?php echo $review["dep"] . " to " . $review["arr"] ?></h1>
-                        <h3><?php echo $review["airline"] ?></h3>
-                        <div class="text-muted fst-italic mb-2">Posted on <?php echo $review["timestamp"] ?> by <a href="reviewsByUser.php?id=<?php echo $review["user_id"] ?>"><?php echo isset($_SESSION["user"]) && $review["author"] == $_SESSION["user"] ? "you" : $review["author"] ?> </a></div>
+                        <h2 class="fw-bolder mb-1"><?php echo $review["dep"] . " to " . $review["arr"] ?></h1>
+                            <div class="text-muted fst-italic mb-2">Posted on <?php echo $review["timestamp"] ?> by <a href="reviewsByUser.php?id=<?php echo $review["user_id"] ?>"><?php echo isset($_SESSION["user"]) && $review["author"] == $_SESSION["user"] ? "you" : $review["author"] ?> </a></div>
                     </header>
                     <!-- Rating -->
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

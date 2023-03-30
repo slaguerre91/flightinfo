@@ -2,6 +2,7 @@
 session_start();
 require_once('../partials/header.php');
 require_once('../../controllers/review/search.php');
+
 ?>
 </head>
 
@@ -15,6 +16,7 @@ require_once('../../controllers/review/search.php');
             <div class="card text-center my-4">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $result['airline'] ?></h5>
+                    <img src="<?php echo getLogo($result["airline"]) ?>" alt="logo">
                     <p class="card-text">Average rating: <?php echo round($result['rating'], 1) . "/5" ?></p>
                     <p class="card-text">Total reviews: <?php echo $result['review_count'] ?></p>
                     <a href="reviewsByRoute?airline=<?php echo $result['airline'] ?>&dep=<?php echo $result['dep'] ?>&arr=<?php echo $result['arr'] ?>&page=1" class="btn btn-primary">Read Reviews</a>

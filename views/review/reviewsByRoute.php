@@ -2,6 +2,8 @@
 session_start();
 require_once('../../controllers/review/reviewsByRoute.php');
 require_once('../partials/header.php');
+require_once(__DIR__ . '/../../controllers/helpers/airlinelogo.php');
+
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -11,9 +13,10 @@ require_once('../partials/header.php');
     <?php
     require_once('../partials/nav.php');
     ?>
-
     <section class="features-icons bg-light text-center">
         <div class="container">
+            <img src="<?php echo getLogo($reviews[0]["airline"]) ?>" alt="logo">
+            <h1 class="mb-4"><?php echo $reviews[0]["airline"] ?></h1>
             <div class="row">
                 <?php foreach ($reviews as $review) { ?>
                     <div class="col-lg-4 mb-3">

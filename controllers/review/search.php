@@ -1,5 +1,7 @@
 <?php
 require_once(__DIR__ . "/../helpers/validate.php");
+require_once(__DIR__ . "/../helpers/airlinelogo.php");
+
 
 if (
     empty($_GET["dep"]) || empty($_GET["arr"]) || !validateAirports($_GET["dep"], $_GET["arr"])
