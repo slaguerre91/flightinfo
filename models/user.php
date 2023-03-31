@@ -43,18 +43,18 @@ class User
     public function register($user)
     {
         try {
-            $sth = $this->dbh->prepare("select * from User where username = :username");
+            $sth = $this->dbh->prepare("select * from user where username = :username");
             $sth->bindValue('username', $user["username"]);
             $sth->execute();
             if ($sth->rowCount() > 0) {
                 $result = "User already exists";
             } else {
-                $sth = $this->dbh->prepare("insert into User(username, password) values (:username, :password)");
+                $sth = $this->dbh->prepare("insert into user(username, password) values (:username, :password)");
                 $hash = password_hash($user["password"], PASSWORD_DEFAULT);
                 $sth->bindValue('username', htmlspecialchars($user['username']));
                 $sth->bindValue('password', $hash);
                 $sth->execute();
-                $sth = $this->dbh->prepare("select * from User where Id = :id");
+                $sth = $this->dbh->prepare("select * from user where Id = :id");
                 $id = $this->dbh->lastInsertId();
                 $sth->bindValue('id', $id);
                 $sth->execute();
@@ -62,7 +62,7 @@ class User
             }
             return $result;
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed 2" . "<br/>";
+            $_SESSION["flash_message"] = "Error! database connection failed 2" . print_r($result) .  "<br/>";
             header("Location: ../../views/error");
             exit;
         }
