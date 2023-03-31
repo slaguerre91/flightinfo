@@ -13,7 +13,7 @@ class User
         try {
             $this->dbh = new PDO('mysql:host=' . $_ENV['MY_SQL_HOST'] . ';dbname=' . $_ENV['MY_SQL_DBNAME'], $_ENV['MY_SQL_USER'], $_ENV['MY_SQL_PASSWORD']);
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed 1" . "<br/>";
+            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
             header("Location: ../../views/error");
             exit;
         }
@@ -22,7 +22,7 @@ class User
     public function login($user)
     {
         try {
-            $sth = $this->dbh->prepare("select * from User where username = :username");
+            $sth = $this->dbh->prepare("select * from user where username = :username");
             $sth->bindValue('username', $user["username"]);
             $sth->execute();
             if ($sth->rowCount() == 0) {
@@ -62,7 +62,7 @@ class User
             }
             return $result;
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed 2" . print_r($result) .  "<br/>";
+            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
             header("Location: ../../views/error");
             exit;
         }
@@ -71,7 +71,7 @@ class User
     public function show($id)
     {
         try {
-            $sth = $this->dbh->prepare("select * from User where id = :id");
+            $sth = $this->dbh->prepare("select * from user where id = :id");
             $sth->bindValue('id', $id);
             $sth->execute();
             $result = $sth->fetch(PDO::FETCH_ASSOC);
@@ -86,7 +86,7 @@ class User
     public function delete($id)
     {
         try {
-            $sth = $this->dbh->prepare("delete from User where id = :id");
+            $sth = $this->dbh->prepare("delete from user where id = :id");
             $sth->bindValue('id', $id);
             $sth->execute();
         } catch (PDOException $e) {
