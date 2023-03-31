@@ -15,7 +15,7 @@ if (isset($_SESSION["user"])) {
     // Create review
     $conn = require_once('../../models/review.php');
     $conn->createNew($_POST);
-    header("Location: ../../views/index");
+    header("Location: ../../views/review/index");
 } else {
     header("Location: ../../views/user/login");
 }

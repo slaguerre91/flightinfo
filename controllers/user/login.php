@@ -14,6 +14,6 @@ if ($login == "login failed") {
         header("Location: " . "../../views/" . $currUrl);
     } else {
         $_SESSION["flash_message"] = "Welcome back, " . $_SESSION["user"];
-        header("Location: ../../views/index");
+        header("Location: ../../views/review/index");
     }
 }

@@ -19,7 +19,7 @@ if (isset($_SESSION["user"])) {
     // Delete review
     if ($_SESSION["id"] == $review["user_id"]) {
         $conn->delete($_POST["id"]);
-        header("Location: ../../views/index");
+        header("Location: ../../views/review/index");
     } else {
         $_SESSION["flash_message"] = "Not allowed. This is not your review.";
         header("Location: ../../views/error");

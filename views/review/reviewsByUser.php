@@ -36,7 +36,7 @@ require_once('../partials/header.php');
                                     <?php } ?>
                                 </div>
                                 <p class="card-summary"><?php echo $review["summary"] ?></p>
-                                <a class="btn btn-primary mt-auto align-self-end mx-auto" href="show.php?id=<?php echo $review['id'] ?>">Read More</a>
+                                <a class="btn btn-primary mt-auto align-self-end mx-auto" href="show?id=<?php echo $review['id'] ?>">Read More</a>
                             </div>
                         </div>
                     </div>

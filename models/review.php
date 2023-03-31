@@ -14,7 +14,7 @@ class Review
             $this->dbh = new PDO('mysql:host=' . $_ENV['MY_SQL_HOST'] . ';dbname=' . $_ENV['MY_SQL_DBNAME'], $_ENV['MY_SQL_USER'], $_ENV['MY_SQL_PASSWORD']);
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -28,7 +28,7 @@ class Review
             return $result;
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -54,7 +54,7 @@ class Review
             $sth->execute();
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -89,7 +89,7 @@ class Review
             return $result;
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -111,7 +111,7 @@ class Review
             return $result;
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -128,7 +128,7 @@ class Review
             return $result;
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -143,7 +143,7 @@ class Review
             return $result;
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -158,7 +158,7 @@ class Review
             $sth->execute();
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -171,7 +171,7 @@ class Review
             $sth->execute();
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -183,7 +183,7 @@ class Review
             $sth->execute();
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }
@@ -199,7 +199,7 @@ class Review
             return $result;
         } catch (PDOException $e) {
             $_SESSION["flash_message"] = "Error! database connection failed." . "<br/>";
-            header("Location: /flightinfo/views/error.php");
+            header("Location: ../../views/error");
             exit;
         }
     }

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once('../controllers/review/recent.php');
-require_once('partials/header.php');
+require_once('../../controllers/review/recent.php');
+require_once('../partials/header.php');
 
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,7 +21,7 @@ require_once('partials/header.php');
 
     <!-- Navigation-->
     <?php
-    require_once('partials/nav.php');
+    require_once('../partials/nav.php');
     ?>
 
     <!-- Masthead-->
@@ -46,7 +46,7 @@ require_once('partials/header.php');
                                     <?php } ?>
                                 </div>
                                 <p class="card-summary"><?php echo $review["summary"] ?></p>
-                                <a class="btn btn-primary mt-auto align-self-end mx-auto" href="review/show.php?id=<?php echo $review['id'] ?>">Read More</a>
+                                <a class="btn btn-primary mt-auto align-self-end mx-auto" href="show?id=<?php echo $review['id'] ?>">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -55,4 +55,4 @@ require_once('partials/header.php');
         </div>
     </section>
 
-    <?php require_once('partials/footer.php') ?>;
+    <?php require_once('../partials/footer.php') ?>;
