@@ -17,12 +17,12 @@ if (strlen($_POST["username"]) < 6 || strlen($_POST["password"]) < 6) {
     if (strcmp($upload, "Success") != 0) {
         $_SESSION["flash_message"] = $upload;
         header("Location: ../../views/user/register");
-        $conn->delete($register["Id"]);
+        $conn->delete($register["id"]);
         exit;
     }
     // upload profile picture to Cloudinary and redirect to index
     $_SESSION["user"] = $register["username"];
-    $_SESSION["id"] = $register["Id"];
+    $_SESSION["id"] = $register["id"];
     $_SESSION["flash_message"] = "Welcome, " . $_SESSION["user"];
     header("Location: ../../views/review/index");
 }

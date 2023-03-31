@@ -46,7 +46,7 @@ $thumbnailURL = getURL($review["author"]);
                 <div class="card mb-4 mt-2">
                     <div class="card-header"><?php echo $user["username"] ?></div>
                     <div class="m-auto mt-1"><img class="rounded-circle" src="<?php echo $thumbnailURL ?>" alt="user_picture"></div>
-                    <div class="card-body"><a href="reviewsByUser?id=<?php echo $user["Id"] ?>&page=1">More from <?php echo isset($_SESSION["user"])  && $review["author"] == $_SESSION["user"] ? "you" : $review["author"] ?></a></div>
+                    <div class="card-body"><a href="reviewsByUser?id=<?php echo $user["id"] ?>&page=1">More from <?php echo isset($_SESSION["user"])  && $review["author"] == $_SESSION["user"] ? "you" : $review["author"] ?></a></div>
                 </div>
                 <!-- Update and Delete review-->
                 <div class="d-flex justify-content-center">

@@ -7,7 +7,7 @@ if ($login == "login failed") {
     header("Location: ../../views/user/login");
 } else {
     $_SESSION["user"] = $login["username"];
-    $_SESSION["id"] = $login["Id"];
+    $_SESSION["id"] = $login["id"];
     if (isset($_SESSION["currUrl"])) {
         $currUrl = $_SESSION["currUrl"];
         unset($_SESSION["currUrl"]);

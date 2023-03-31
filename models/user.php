@@ -54,7 +54,7 @@ class User
                 $sth->bindValue('username', htmlspecialchars($user['username']));
                 $sth->bindValue('password', $hash);
                 $sth->execute();
-                $sth = $this->dbh->prepare("select * from user where Id = :id");
+                $sth = $this->dbh->prepare("select * from user where id = :id");
                 $id = $this->dbh->lastInsertId();
                 $sth->bindValue('id', $id);
                 $sth->execute();
