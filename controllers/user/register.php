@@ -24,5 +24,5 @@ if (strlen($_POST["username"]) < 6 || strlen($_POST["password"]) < 6) {
     $_SESSION["user"] = $register["username"];
     $_SESSION["id"] = $register["Id"];
     $_SESSION["flash_message"] = "Welcome, " . $_SESSION["user"];
-    header("Location: ../../views/index");
+    header("Location: ../../views/review/index");
 }

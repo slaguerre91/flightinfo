@@ -13,7 +13,7 @@ class User
         try {
             $this->dbh = new PDO('mysql:host=' . $_ENV['MY_SQL_HOST'] . ';dbname=' . $_ENV['MY_SQL_DBNAME'], $_ENV['MY_SQL_USER'], $_ENV['MY_SQL_PASSWORD']);
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
+            $_SESSION["flash_message"] = "Error! database connection failed 1" . "<br/>";
             header("Location: ../../views/error");
             exit;
         }
@@ -62,7 +62,7 @@ class User
             }
             return $result;
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
+            $_SESSION["flash_message"] = "Error! database connection failed 2" . "<br/>";
             header("Location: ../../views/error");
             exit;
         }
