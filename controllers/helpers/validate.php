@@ -2,7 +2,7 @@
 function validateAirports($dep, $arr)
 {
     // Read the JSON file
-    $json = file_get_contents('../../models/json/airports.json');
+    $json = file_get_contents(__dir__ . '/../../views/json/airports.json');
     // Decode the JSON file
     $json_data = json_decode($json, true);
     // Map data
@@ -17,7 +17,7 @@ function validateAirports($dep, $arr)
 function validateAirline($airlineInput)
 {
     // Read the JSON file
-    $json = file_get_contents('../../models/json/airlines.json');
+    $json = file_get_contents(__dir__ . '/../../views/json/airlines.json');
     // Decode the JSON file
     $json_data = json_decode($json, true);
     // Map data

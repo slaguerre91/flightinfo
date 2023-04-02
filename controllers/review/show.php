@@ -7,9 +7,9 @@ if (isset($_GET["id"])) {
     $user = $userConn->show($review["user_id"]);
     if (empty($review)) {
         $_SESSION["flash_message"] = "Review id is empty or does not exit";
-        header("Location: index");
+        header("Location: ../");
     }
 } else {
     $_SESSION["flash_message"] = "Please select a review id";
-    header("Location: index");
+    header("Location: ../");
 }

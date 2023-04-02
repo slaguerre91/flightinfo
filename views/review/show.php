@@ -52,7 +52,7 @@ $thumbnailURL = getURL($review["author"]);
                 <div class="d-flex justify-content-center">
                     <?php if (isset($_SESSION["id"]) && $_SESSION["id"] == $review["user_id"]) { ?>
                         <a href=" update?id=<?php echo $review["id"] ?>" class="btn btn-primary mx-1"> Update </a>
-                        <form action="../../controllers/review/delete.php" method="post" class="d-inline-block">
+                        <form action="routes/delete.php" method="post" class="d-inline-block">
                             <input type="hidden" name="id" value="<?php echo $review["id"] ?>">
                             <button class="btn btn-primary mx-1">
                                 Delete

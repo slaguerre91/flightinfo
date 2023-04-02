@@ -35,7 +35,7 @@ require_once('../partials/header.php');
                         <div class="col-lg-6 mb-5 mb-lg-0">
                             <div class="card">
                                 <div class="card-body py-5 px-md-5">
-                                    <form class="needs-validation" action="../../controllers/user/login.php" method="post" novalidate>
+                                    <form class="needs-validation" action="routes/login.php" method="post" novalidate>
                                         <!-- Username input -->
                                         <div class="form-outline mb-4">
                                             <div class="input-group has-validation">

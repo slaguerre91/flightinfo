@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])) {
             echo $_SESSION["user"];
             ?>
         </h1>
-        <a href="../../controllers/user/delete.php">Close Account</a>
+        <a href="routes/delete.php">Close Account</a>
     </div>
     <?php
     require_once('../partials/footer.php');

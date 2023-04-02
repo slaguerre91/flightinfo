@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("../helpers/validate.php");
+require_once(__dir__ . "/../helpers/validate.php");
 if (isset($_SESSION["user"])) {
     // Check for empty or invalid fields
     if (
@@ -9,13 +9,13 @@ if (isset($_SESSION["user"])) {
         || strlen($_POST["summary"]) > 75
     ) {
         $_SESSION["flash_message"] = "Invalid input data.";
-        header("Location: ../../views/review/create");
+        header("Location: ../create");
         exit();
     }
     // Create review
-    $conn = require_once('../../models/review.php');
+    $conn = require_once(__DIR__ . "/../../models/review.php");
     $conn->createNew($_POST);
-    header("Location: ../../views/review/index");
+    header("Location: ../../");
 } else {
-    header("Location: ../../views/user/login");
+    header("Location: ../../user/login");
 }

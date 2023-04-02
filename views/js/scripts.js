@@ -36,7 +36,7 @@ $(document).ready(function () {
 jQuery(document).ready((function () {
     let availableTags = [];
     $(async function () {
-        const resAirports = await fetch('../../models/json/airports.json')
+        const resAirports = await fetch('../json/airports.json')
         const airports = await resAirports.json();
         const airportResults = airports.map(function (d) {
             return `${d.name} (${d.city}) - ${d.iata_code}`;
@@ -50,7 +50,7 @@ jQuery(document).ready((function () {
         });
     });
     $(async function () {
-        const resAirlines = await fetch('../../models/json/airlines.json')
+        const resAirlines = await fetch('../json/airlines.json')
         const airlines = await resAirlines.json();
         const airlineResults = airlines.map(function (d) {
             return `${d.name}`;

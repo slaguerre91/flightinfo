@@ -23,7 +23,7 @@ if ($_SESSION["id"] !== $review["user_id"]) {
     require_once('../partials/nav.php');
     ?>
     <div class="container py-5">
-        <form class="needs-validation" action=" ../../controllers/review/update.php" method="post" novalidate>
+        <form class="needs-validation" action="routes/update.php" method="post" novalidate>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo $review["id"] ?>">
                 <h3 class="fw-bolder mb-1"><?php echo $review["dep"] . " to " . $review["arr"] ?></h3>

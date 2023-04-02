@@ -24,7 +24,7 @@ require_once('../partials/header.php');
         ?>
     <?php } ?>
     <div class="container">
-        <form class="needs-validation" action="../../controllers/review/create.php" method="post" novalidate>
+        <form class="needs-validation" action="routes/create.php" method="post" novalidate>
             <div class="form-group">
                 <input type="hidden" name="author" value="<?php echo $_SESSION["user"] ?>">
                 <input type="hidden" name="id" value="<?php echo $_SESSION["id"] ?>">
