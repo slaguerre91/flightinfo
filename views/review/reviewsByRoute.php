@@ -44,7 +44,7 @@ require_once(__DIR__ . '/../../controllers/helpers/airlinelogo.php');
             <?php for ($i = 1; $i <= ceil(count($totalReviews) / 12); $i++) { ?>
                 <li class="page-item"><a class="page-link" href="reviewsByRoute?airline=<?php echo $review['airline'] ?>&dep=<?php echo $review['dep'] ?>&arr=<?php echo $review['arr'] ?>&page=<?php echo $i ?>"><?php echo $i ?></a></li>
             <?php } ?>
-            <li class="page-item"><a class="page-link" href="reviewsByRoute?airline=<?php echo $review['airline'] ?>&dep=<?php echo $review['dep'] ?>&arr=<?php echo $review['arr'] ?>&page=<?php echo (!empty($_GET["page"]) && $_GET["page"] != ceil(count($totalReviews) / 10)) ? $_GET["page"] + 1 : 1 ?>">Next</a></li>
+            <li class="page-item"><a class="page-link" href="reviewsByRoute?airline=<?php echo $review['airline'] ?>&dep=<?php echo $review['dep'] ?>&arr=<?php echo $review['arr'] ?>&page=<?php echo (!empty($_GET["page"]) && $_GET["page"] != ceil(count($totalReviews) / 12)) ? $_GET["page"] + 1 : 1 ?>">Next</a></li>
         </ul>
     </nav>
     <?php require_once('../partials/footer.php') ?>;

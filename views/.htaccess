@@ -1,5 +1,5 @@
 Options -Indexes
-ErrorDocument 404 /flightinfo/views/index.php
+ErrorDocument 404 http://www.yourdomain
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
