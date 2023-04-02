@@ -70,7 +70,7 @@ require_once('../controllers/review/recent.php');
                             <a class="navbar-brand d-lg-none" href="user/user">My Account</a>
                         </li>
                         <li>
-                            <a class="navbar-brand d-lg-none" href="user/logout.php">Sign Out</a>
+                            <a class="navbar-brand d-lg-none" href="user/routes/logout.php">Sign Out</a>
                         </li>
                     <?php } ?>
 
@@ -86,7 +86,7 @@ require_once('../controllers/review/recent.php');
                 <a class="btn btn-primary d-none d-lg-inline-block mx-2 navbutton" href="user/register">Sign Up</a>
             <?php } else { ?>
                 <a class="navbar-brand d-none d-lg-inline-block" href="user/user">My Account</a>
-                <a class="btn btn-primary d-none d-lg-inline-block" href="../controllers/user/logout.php">Sign Out</a>
+                <a class="btn btn-primary d-none d-lg-inline-block" href="user/routes/logout.php">Sign Out</a>
             <?php } ?>
         </div>
     </nav>
