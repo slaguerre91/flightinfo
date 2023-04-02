@@ -11,5 +11,5 @@ if (isset($_SESSION["id"])) {
     header("Location: ../../");
 } else {
     $_SESSION["flash_message"] = "No logged in user";
-    header("Location: ../../views/error");
+    header("Location: ../../error");
 }

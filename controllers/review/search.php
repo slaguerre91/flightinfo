@@ -7,7 +7,7 @@ if (
     empty($_GET["dep"]) || empty($_GET["arr"]) || !validateAirports($_GET["dep"], $_GET["arr"])
 ) {
     $_SESSION["flash_message"] = "Invalid search criteria.";
-    header("Location: ../../views/");
+    header("Location: ../");
     exit();
 }
 $conn = require_once('../../models/review.php');

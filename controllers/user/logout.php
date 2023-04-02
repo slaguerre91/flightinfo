@@ -7,5 +7,5 @@ if (isset($_SESSION['user'])) {
     header("Location: ../../");
 } else {
     $_SESSION["flash_message"] = "Unable to perform. No user detected.";
-    header("Location: ../../views/error");
+    header("Location: ../../error");
 }
