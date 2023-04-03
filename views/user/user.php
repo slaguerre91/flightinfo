@@ -20,7 +20,10 @@ if (!isset($_SESSION['user'])) {
             echo $_SESSION["user"];
             ?>
         </h1>
-        <a href="routes/delete.php">Close Account</a>
+        <form action="routes/delete.php" method="post">
+            <input type="hidden" name="id" value=<?php echo $_SESSION["id"] ?>>
+            <button class="btn btn-danger">Close Account</button>
+        </form>
     </div>
     <?php
     require_once('../partials/footer.php');
