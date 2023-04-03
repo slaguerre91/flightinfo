@@ -1,13 +1,13 @@
-#Flight Info
+# Flight Info
 This full stack web app is a simple review site for airline routes. Users can browse reviews for any airport pair and commercial airline in the world. They can also create an account and post their own reviews.
 
-##Tech Stack
+## Tech Stack
 * Apache
 * MYSQL (MariaDB)
 * PHP
 * JQuery
 
-##Deployment Instructions
+## Deployment Instructions
 1. Place the project files in the application folder located in your server
 2. Install dependencies
 ```bash
@@ -55,11 +55,13 @@ CLOUDINARY_API_SECRET="mycloudinarysecret"
 RewriteRule  ^(.+)$ yourdomain [QSA,L]
 ```
 
-6. Seed user table by loading views/admin/index.php and clicking the button
+6. Load the homepage and create the first user with username "administrator"
 
-7. Application is now ready to use 
+7. Login as "administrator"
 
-##About Seed Data
+7. Seed the user table by going to the Admin page (link is on nav bar) and clicking the button
+
+## About Seed Data
 Once the application is properly configured, the search controller (**controllers/review/search.php**) seeds reviews as needed in order to mimic a real production review site. 
 
 When a user search is made, the controller will populate the route in question with seed reviews if there's less than 2 search results. The airlines, users, review text as well as the volume of seed data are picked at random. This can be turned off by commenting out the below code from the controller:
@@ -70,7 +72,7 @@ if (count($searchResults) < 2) {
 }
 ```
 
-##Licence
+## Licence
 This project is licensed under the terms of the MIT license.
 
 
