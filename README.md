@@ -1,4 +1,4 @@
-#Flight Info
+# Flight Info
 This full stack web app is a simple review site for airline routes. Users can browse reviews for any airport pair and commercial airline in the world. They can also create an account and post their own reviews.
 
 ##Tech Stack
