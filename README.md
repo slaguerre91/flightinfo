@@ -59,7 +59,7 @@ RewriteRule  ^(.+)$ yourdomain [QSA,L]
 
 7. Login as "administrator"
 
-7. Seed the user table by going to the Admin page (link is on nav bar) and clicking the button (takes a few minutes to complete)
+8. Seed the user table by going to the Admin page (link is on nav bar) and clicking the button (takes a few minutes to complete)
 
 ## About Seed Data
 Once the application is properly configured, the search controller (**controllers/review/search.php**) seeds reviews as needed in order to mimic a real production review site. 
