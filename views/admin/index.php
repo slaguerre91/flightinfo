@@ -22,7 +22,7 @@ if ($_SESSION["user"] !== "administrator") {
     require_once('../partials/nav.php');
     ?>
     <div class="container">
-        <form id="seedusers" class="needs-validation" action="../../controllers/admin/seedusers.php" method="post" novalidate>
+        <form id="seedusers" class="needs-validation" action="routes/seedusers.php" method="post" novalidate>
             <!-- <input type="hidden" name="count" value="100"> -->
             <button type="submit" class="btn btn-primary">
                 submit
