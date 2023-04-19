@@ -14,6 +14,17 @@ require_once('../partials/header.php');
         unset($_SESSION["flash_message"]);
         ?>
     <?php } ?>
+    <?php
+    require_once('../partials/nav.php');
+    if (isset($_SESSION["flash_message"])) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION["flash_message"] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php
+        unset($_SESSION["flash_message"]);
+        ?>
+    <?php } ?>
 
     <div class="container">
         <!-- Section: Design Block -->
@@ -57,11 +68,10 @@ require_once('../partials/header.php');
 
                                         <!-- Thumbnail input -->
                                         Select image to upload:
-                                        <label for="formFile" class="thumbnail-label">Default file input example</label>
-                                        <input class="form-control" name="thumbnail" type="file" id="thumbnail">
+                                        <input class="form-control" name="thumbnail" type="file" id="thumbnail" aria-label="file">
                                         <!-- Submit button -->
                                         <button type="submit" value="Submit" name="submit" class="btn btn-primary btn-block  mt-4 mb-4">
-                                            Sign Up
+                                            Register
                                         </button>
                                     </form>
                                 </div>

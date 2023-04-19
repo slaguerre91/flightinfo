@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top py-0">
     <div class="container-fluid">
-        <a class="navbar-brand py-0" href="../"> <img id="logo" src="../assets/logo.png" width="55" height="45" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand py-0" href="../"> <img id="logo" src="../assets/logo.png" width="55" height="45" class="d-inline-block align-top" alt="logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

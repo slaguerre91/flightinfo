@@ -15,6 +15,17 @@ require_once('../partials/header.php');
         unset($_SESSION["flash_message"]);
         ?>
     <?php } ?>
+    <?php
+    require_once('../partials/nav.php');
+    if (isset($_SESSION["flash_message"])) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION["flash_message"] ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php
+        unset($_SESSION["flash_message"]);
+        ?>
+    <?php } ?>
 
     <div class="container">
         <!-- Section: Design Block -->
@@ -59,6 +70,9 @@ require_once('../partials/header.php');
                                         <button type="submit" class="btn btn-primary btn-block mb-4">
                                             Sign In
                                         </button>
+                                        <div>
+                                            <p style="color: hsl(217, 10%, 50.8%)">Below are the credentials for a test account. Feel free to use them!<br>Username: "testuser"/Password: "flightinfo"</p>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
