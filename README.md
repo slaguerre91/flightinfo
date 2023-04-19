@@ -6,6 +6,7 @@ This full stack web app is a simple review site for airline routes. Users can br
 * MYSQL (MariaDB)
 * PHP
 * JQuery
+* HTML, CSS, Bootstrap 5
 
 ## Deployment Instructions
 1. Place the project files in the application folder located in your server
