@@ -32,13 +32,13 @@ if ($_SESSION["id"] !== $review["user_id"]) {
                     Field can't be empty
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control my-2" name="summary" id="summary" rows="3" placeholder="Summary" aria-label="summary" required><?php echo $review["summary"] ?></textarea>
+                    <textarea class="form-control my-2" name="summary" id="summary" rows="3" placeholder="Summary" aria-label="summary" required><?php echo strip_tags($review["summary"]) ?></textarea>
                     <div class="invalid-feedback">
                         Field can't be empty
                     </div>
                 </div>
                 <div>
-                    <textarea class="form-control" rows="5" cols="33" name="review_text" id="review" placeholder="Review" aria-label="Review" required><?php echo $review["review_text"] ?></textarea>
+                    <textarea class="form-control" rows="5" cols="33" name="review_text" id="review" placeholder="Review" aria-label="Review" required><?php echo strip_tags($review["review_text"]) ?></textarea>
                     <div class="invalid-feedback">
                         Field can't be empty
                     </div>
