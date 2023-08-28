@@ -5,4 +5,5 @@ function redirect($location, $flash=null){
         $_SESSION["flash_message"] = $flash;
     }
     header("Location: " . $location);
+    exit();
 }   

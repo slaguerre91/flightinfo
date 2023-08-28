@@ -1,7 +1,6 @@
 <?php
 
 /**
- * Source: https://gist.github.com/irazasyed/f41f8688a2b3b8f7b6df
  * getRandomWeightedElement()
  * Utility function for getting random values with weighting.
  * Pass in an associative array, such as array('A'=>5, 'B'=>45, 'C'=>50)

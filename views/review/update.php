@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 }
 // Restrict access to page if post does not belong to user
 if ($_SESSION["id"] !== $review["user_id"]) {
-    $_SESSION["flash_message"] = "You can only update your own post.";
+    $_SESSION["flash_message"] = "You can only update your own post";
     header("Location: ../index.php");
     exit;
 }

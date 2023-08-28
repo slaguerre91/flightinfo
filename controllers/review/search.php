@@ -1,14 +1,10 @@
 <?php
 require_once(__DIR__ . "/../helpers/validate.php");
 require_once(__DIR__ . "/../helpers/airlinelogo.php");
+require_once(__DIR__ . "/../helpers/redirect.php");
 
-
-if (
-    empty($_GET["dep"]) || empty($_GET["arr"]) || !validateAirports($_GET["dep"], $_GET["arr"])
-) {
-    $_SESSION["flash_message"] = "Invalid search criteria.";
-    header("Location: ../");
-    exit();
+if (invalidSearch($_GET)) {
+    redirect("../", "Invalid search criteria.");
 }
 $conn = require_once('../../models/review.php');
 $searchResults = $conn->search($_GET);

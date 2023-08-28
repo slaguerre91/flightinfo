@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 $connUser = require_once(__DIR__ . '/../../models/user.php');
 require_once(__DIR__ . '/../helpers/airlinepicker.php');
-// require_once(__DIR__ . '/../helpers/validate.php');
 require_once(__DIR__ . '/../helpers/ratingpicker.php');
 
 // Pick 3-10 random airlines

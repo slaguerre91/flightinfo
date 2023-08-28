@@ -37,5 +37,64 @@ function invalidNewPost($post){
 }
 
 function invalidUpdatedPost($post){
-    return empty($_POST["summary"]) || empty($_POST["review_text"]) || empty($_POST["rating"]) || !in_array($_POST["rating"], [1, 2, 3, 4, 5]) || strlen($_POST["summary"]) > 75;
+    return empty($post["summary"]) || empty($post["review_text"]) || empty($post["rating"]) || !in_array($post["rating"], [1, 2, 3, 4, 5]) || strlen($post["summary"]) > 75;
+}
+
+
+function invalidSearch($get){
+    return  empty($get["dep"]) || empty($get["arr"]) || !validateAirports($get["dep"], $get["arr"]);
+}
+
+function updateReview($userReview, $reviewModel){
+    // Check if review Id is valid before querying database
+    if (isset($userReview["id"])) {
+        $review = $reviewModel->show($userReview["id"]);
+        if (empty($review)) {
+            redirect("../../error", "Review id is empty or does not exist");
+        }
+    } else {
+        redirect("../../error", "No review id was provided in post request");
+    }
+    // Check for other empty or invalid input fields
+    if (invalidUpdatedPost($userReview)) {
+        redirect("../../error", "Invalid input data.");
+    }
+    // Update review
+    if ($_SESSION["id"] == $review["user_id"]) {
+        $reviewModel->update($userReview);
+        redirect("../show?id=" . $userReview["id"]);
+    } else {
+        redirect( "../../error", "You can only update your own post.");
+    }
+}
+
+function createReview($userReview){
+    // Check for empty or invalid fields
+    if (invalidNewPost($userReview)) {
+        redirect("../create", "Invalid input data.");
+    }
+    // Create review
+    $conn = require_once(__DIR__ . "/../../models/review.php");
+    $conn->createNew($userReview);
+    redirect("../../");
+}
+
+function deleteReview($userReview){
+    $conn = require_once(__DIR__ . '/../../models/review.php');
+    // Check if review Id is valid before querying database
+    if (isset($userReview["id"])) {
+        $review = $conn->show($userReview["id"]);
+        if (empty($review)) {
+            redirect("../../error", "Unable to perform. Please select a valid post to delete." );
+        }
+    } else {
+        redirect("../../error", "No review id was provided in post request");
+    }
+    // Delete review
+    if ($_SESSION["id"] == $review["user_id"]) {
+        $conn->delete($userReview["id"]);
+        redirect("../../");
+    } else {
+        redirect("../../error",  "Not allowed. This is not your review.");
+    }
 }

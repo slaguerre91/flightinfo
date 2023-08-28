@@ -1,11 +1,10 @@
 <?php
 session_start();
+require_once(__DIR__ . "/../helpers/redirect.php");
+require_once(__DIR__ . "/../helpers/auth.php");
+
 if (isset($_SESSION['user'])) {
-    unset($_SESSION['user']);
-    unset($_SESSION['id']);
-    $_SESSION["flash_message"] = "Goodbye";
-    header("Location: ../../");
+    logout();
 } else {
-    $_SESSION["flash_message"] = "Unable to perform. No user detected.";
-    header("Location: ../../error");
+    redirect("../../error", "Unable to perform. No user detected.");
 }

@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once(__DIR__ . "/../helpers/redirect.php");
+
 $connUser = require_once(__DIR__ . '/../../models/user.php');
 $connReviews = require_once(__DIR__ . '/../../models/review.php');
 if (isset($_SESSION["id"])) {
@@ -9,12 +11,10 @@ if (isset($_SESSION["id"])) {
         //Delete user reviews
         $connReviews->deleteUserReviews($_SESSION["id"]);
         require_once("logout.php");
-        header("Location: ../../");
+        redirect("../../");
     } else {
-        $_SESSION["flash_message"] = "Can't delete the test user!";
-        header("Location: ../../error");
+        redirect("../../error", "Can't delete the test user!");
     }
 } else {
-    $_SESSION["flash_message"] = "No logged in user";
-    header("Location: ../../error");
+    redirect("../../error", "No logged in user");
 }
