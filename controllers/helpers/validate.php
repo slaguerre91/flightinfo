@@ -1,3 +1,4 @@
+<!-- Validation helpers for controllers -->
 <?php
 function validateAirports($dep, $arr)
 {
@@ -5,12 +6,13 @@ function validateAirports($dep, $arr)
     $json = file_get_contents(__dir__ . '/../../views/json/airports.json');
     // Decode the JSON file
     $json_data = json_decode($json, true);
-    // Map data
+    // Parse and map data
     function airportParser($airport)
     {
         return $airport["name"] . " (" . $airport["city"] . ") - " . $airport["iata_code"];
     }
     $airport_lookup = array_map("airportParser", $json_data);
+    // Return true if paramaters are valid airport names
     return in_array($dep, $airport_lookup) && in_array($arr, $airport_lookup) && strcmp($dep, $arr) !== 0;
 }
 
@@ -37,11 +39,13 @@ function invalidNewPost($post){
 }
 
 function invalidUpdatedPost($post){
+    // Returns true if user attempts to update a post with invalid values
     return empty($post["summary"]) || empty($post["review_text"]) || empty($post["rating"]) || !in_array($post["rating"], [1, 2, 3, 4, 5]) || strlen($post["summary"]) > 75;
 }
 
 
 function invalidSearch($get){
+    // Returns true if user attempts an invalid search
     return  empty($get["dep"]) || empty($get["arr"]) || !validateAirports($get["dep"], $get["arr"]);
 }
 

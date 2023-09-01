@@ -1,3 +1,4 @@
+<!-- Error page -->
 <?php
 session_start();
 ?>
@@ -10,6 +11,7 @@ session_start();
 </head>
 
 <body>
+    <!-- error message -->
     <?php
     if (isset($_SESSION["flash_message"])) {
         $error =  $_SESSION["flash_message"];
@@ -27,6 +29,7 @@ session_start();
             <path d="M281,801 L383,861.025276 L383,979.21169 L281,1037 L179,979.21169 L179,861.025276 L281,801 Z" id="Polygon-5" stroke="#36B455" stroke-width="6" sketch:type="MSShapeGroup"></path>
         </g>
     </svg>
+    <!-- Main page content -->
     <div class="message-box">
         <h1>Unable to load page</h1>
         <p><?php echo !empty($error) ? $error : "Unknown error. Please try again later." ?></p>

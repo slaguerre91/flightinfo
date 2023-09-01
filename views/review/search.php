@@ -1,3 +1,5 @@
+
+<!-- Search page -->
 <?php
 session_start();
 require_once('../partials/header.php');
@@ -9,6 +11,7 @@ require_once('../partials/header.php');
     <?php
     require_once('../partials/nav.php');
     ?>
+    <!-- Main page content -->
     <div class="container my-4 h-75 h-lg-50 bg-light" id=#content>
         <div class="row text-center">
             <div class="col-12">
@@ -40,9 +43,9 @@ require_once('../partials/header.php');
     </div>
     </div>
 
-    <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <?php
-    require_once('../partials/footer.php');
-    ?>
+<script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<?php
+require_once('../partials/footer.php');
+?>

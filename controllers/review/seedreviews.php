@@ -1,3 +1,4 @@
+<!-- Seed data controller -->
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 $connUser = require_once(__DIR__ . '/../../models/user.php');

@@ -61,7 +61,7 @@ function uploadThumbnail()
 
 function uploadSeedThumbnail($url, $username)
 {
-
+    // Upload seed files
     (new UploadApi())->upload($url, [
         'public_id' => $username,
         'folder' => 'user_thumbnails',

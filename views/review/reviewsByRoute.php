@@ -1,3 +1,4 @@
+<!-- Reviews by route page -->
 <?php
 session_start();
 require_once('../../controllers/review/reviewsByRoute.php');
@@ -9,10 +10,10 @@ require_once(__DIR__ . '/../../controllers/helpers/airlinelogo.php');
 </head>
 
 <body>
-    <!-- Navigation-->
     <?php
     require_once('../partials/nav.php');
     ?>
+    <!-- Main page content -->
     <section class="features-icons bg-light text-center">
         <div class="container">
             <img src="<?php echo getLogo($reviews[0]["airline"]) ?>" alt="logo">
@@ -47,4 +48,4 @@ require_once(__DIR__ . '/../../controllers/helpers/airlinelogo.php');
             <li class="page-item"><a class="page-link" href="reviewsByRoute?airline=<?php echo $review['airline'] ?>&dep=<?php echo $review['dep'] ?>&arr=<?php echo $review['arr'] ?>&page=<?php echo (!empty($_GET["page"]) && $_GET["page"] != ceil(count($totalReviews) / 12)) ? $_GET["page"] + 1 : 1 ?>">Next</a></li>
         </ul>
     </nav>
-    <?php require_once('../partials/footer.php') ?>;
+<?php require_once('../partials/footer.php') ?>;

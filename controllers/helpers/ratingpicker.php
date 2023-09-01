@@ -1,7 +1,6 @@
 <?php
 
 /**
- * getRandomWeightedElement()
  * Utility function for getting random values with weighting.
  * Pass in an associative array, such as array('A'=>5, 'B'=>45, 'C'=>50)
  * An array like this means that "A" has a 5% chance of being selected, "B" 45%, and "C" 50%.

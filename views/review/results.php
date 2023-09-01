@@ -1,3 +1,4 @@
+<!-- Search results page -->
 <?php
 session_start();
 require_once('../partials/header.php');
@@ -7,10 +8,10 @@ require_once('../../controllers/review/search.php');
 </head>
 
 <body>
-    <!-- Navigation-->
     <?php
     require_once('../partials/nav.php');
     ?>
+    <!-- Main page content -->
     <div class="container">
         <?php foreach ($searchResults as $result) { ?>
             <div class="card text-center my-4">
@@ -24,4 +25,4 @@ require_once('../../controllers/review/search.php');
             </div>
         <?php } ?>
     </div>
-    <?php require_once('../partials/footer.php') ?>;
+<?php require_once('../partials/footer.php') ?>;

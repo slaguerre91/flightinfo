@@ -6,11 +6,12 @@ if (isset($_SESSION["user"]) && $_SESSION["user"] == "administrator") {
     $conn = require_once('../../../models/user.php');
     // Save seed users to db
     $conn->seedUsers($_POST);
-    //Upload seed thumbnails to cloudinary
+    // Upload seed thumbnails to cloudinary
     for ($i = 0; $i < count($_POST["username"]); $i++) {
         uploadSeedThumbnail($_POST["thumbnail"][$i], $_POST["username"][$i]);
     }
     header("Location: ../../");
 } else {
+    // Redirect to login page
     header("Location: ../../user/login");
 }

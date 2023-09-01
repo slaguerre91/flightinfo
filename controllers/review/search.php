@@ -1,3 +1,4 @@
+<!-- Search controller -->
 <?php
 require_once(__DIR__ . "/../helpers/validate.php");
 require_once(__DIR__ . "/../helpers/airlinelogo.php");
@@ -8,7 +9,7 @@ if (invalidSearch($_GET)) {
 }
 $conn = require_once('../../models/review.php');
 $searchResults = $conn->search($_GET);
-//Create fake reviews if $reviews is empty
+//Create seed reviews if $reviews is empty
 if (count($searchResults) < 2) {
     require_once('seedreviews.php');
 }

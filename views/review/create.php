@@ -1,10 +1,12 @@
+<!-- Create review page -->
 <?php
 session_start();
+require_once(__DIR__ . "/../../controllers/helpers/redirect.php");
+
 //Redirect to login page if user is not logged authenticated.
 if (!isset($_SESSION['user'])) {
     $_SESSION["currUrl"] = "review/" . substr(basename(__FILE__), 0, -4);
-    header("Location: ../user/login");
-    exit;
+    redirect("../user/login", "You need to be logged in to perform this operation");
 }
 require_once('../partials/header.php');
 ?>
@@ -14,6 +16,7 @@ require_once('../partials/header.php');
 <body>
     <?php
     require_once('../partials/nav.php');
+    // Display flash message
     if (isset($_SESSION["flash_message"])) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <?php echo $_SESSION["flash_message"] ?>
@@ -23,6 +26,7 @@ require_once('../partials/header.php');
         unset($_SESSION["flash_message"]);
         ?>
     <?php } ?>
+    <!-- Main page content -->
     <div class="container">
         <form class="needs-validation" action="routes/create.php" method="post" novalidate>
             <div class="form-group">
@@ -75,10 +79,9 @@ require_once('../partials/header.php');
         </form>
     </div>
 
-    <!-- <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="../js/scripts.js"></script>
-    <?php
-    require_once('../partials/footer.php');
-    ?>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="../js/scripts.js"></script>
+<?php
+require_once('../partials/footer.php');
+?>

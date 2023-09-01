@@ -1,3 +1,4 @@
+<!-- "Recent reviews" controller -->
 <?php
 $conn = require_once('../models/review.php');
 $userConn = require_once('../models/user.php');

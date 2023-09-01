@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once(__DIR__ . "/../controllers/helpers/redirect.php");
 
 use Dotenv\Dotenv;
 
@@ -13,9 +14,7 @@ class User
         try {
             $this->dbh = new PDO('mysql:host=' . $_ENV['MY_SQL_HOST'] . ';dbname=' . $_ENV['MY_SQL_DBNAME'], $_ENV['MY_SQL_USER'], $_ENV['MY_SQL_PASSWORD']);
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
-            header("Location: ../../views/error");
-            exit;
+            redirect("../../views/error","Error! database connection failed" . "<br/>" );
         }
     }
 
@@ -35,9 +34,7 @@ class User
             }
             return $result;
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
-            header("Location: ../../views/error");
-            exit;
+            redirect("../../views/error", "Error! database connection failed" . "<br/>");
         }
     }
     public function register($user)
@@ -62,9 +59,7 @@ class User
             }
             return $result;
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
-            header("Location: ../../views/error");
-            exit;
+            redirect("../../views/error", "Error! database connection failed" . "<br/>");
         }
     }
 
@@ -77,9 +72,7 @@ class User
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
-            header("Location: ../../views/error");
-            exit;
+            redirect("../../views/error", "Error! database connection failed" . "<br/>");
         }
     }
 
@@ -90,9 +83,7 @@ class User
             $sth->bindValue('id', $id);
             $sth->execute();
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
-            header("Location: ../../views/error");
-            exit;
+            redirect("../../views/error", "Error! database connection failed" . "<br/>");
         }
     }
 
@@ -117,9 +108,7 @@ class User
             $result = $sth->fetch(PDO::FETCH_ASSOC);
             return $result;
         } catch (PDOException $e) {
-            $_SESSION["flash_message"] = "Error! database connection failed" . "<br/>";
-            header("Location: ../../views/error");
-            exit;
+            redirect("../../views/error", "Error! database connection failed" . "<br/>");
         }
     }
 }

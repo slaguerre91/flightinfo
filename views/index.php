@@ -1,3 +1,4 @@
+<!-- Home page -->
 <?php
 session_start();
 require_once('../controllers/review/recent.php');
@@ -91,10 +92,8 @@ require_once('../controllers/review/recent.php');
         </div>
     </nav>
 
-    <!-- Masthead-->
     <header class="masthead">
     </header>
-    <!-- Icons Grid-->
     <section class="features-icons bg-light text-center py-0">
         <div class="container">
             <h1 class="my-5 display-3 fw-bold ls-tight">
@@ -126,7 +125,6 @@ require_once('../controllers/review/recent.php');
         © 2023 Flight info
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
 </body>
 

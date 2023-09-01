@@ -1,3 +1,4 @@
+<!-- User profile page -->
 <?php
 session_start();
 require_once('../partials/header.php');
@@ -14,6 +15,7 @@ if (!isset($_SESSION['user'])) {
     <?php
     require_once('../partials/nav.php');
     ?>
+    <!-- Main page content -->
     <div class="container">
         <h1>
             <?php

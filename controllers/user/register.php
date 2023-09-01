@@ -1,3 +1,4 @@
+<!-- Registration controller -->
 <?php
 session_start();
 $conn = require_once(__DIR__ . '/../../models/user.php');

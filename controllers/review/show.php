@@ -1,3 +1,4 @@
+<!-- Show review controller -->
 <?php
 require_once(__DIR__ . "/../helpers/redirect.php");
 

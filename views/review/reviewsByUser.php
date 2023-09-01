@@ -1,3 +1,4 @@
+<!-- Reviews by user page -->
 <?php
 session_start();
 require_once('../../controllers/review/reviewsByUser.php');
@@ -17,10 +18,10 @@ require_once('../partials/header.php');
         ?>
     <?php } ?>
 
-    <!-- Navigation-->
     <?php
     require_once('../partials/nav.php');
     ?>
+    <!-- Main page content -->
     <section class="features-icons bg-light text-center">
         <div class="container">
             <div class="row">
@@ -53,4 +54,4 @@ require_once('../partials/header.php');
             <li class="page-item"><a class="page-link" href="reviewsByUser?id=<?php echo $review["user_id"] ?>&page=<?php echo (!empty($_GET["page"]) && $_GET["page"] != ceil(count($totalReviews) / 12)) ? $_GET["page"] + 1 : 1 ?>">Next</a></li>
         </ul>
     </nav>
-    <?php require_once('../partials/footer.php') ?>;
+<?php require_once('../partials/footer.php') ?>;

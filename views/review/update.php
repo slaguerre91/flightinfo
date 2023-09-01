@@ -1,12 +1,14 @@
+<!-- Update review page -->
 <?php
 session_start();
 require_once('../partials/header.php');
 require_once('../../controllers/review/show.php');
+require_once(__DIR__ . "/../../controllers/helpers/redirect.php");
+
 //Redirect to login page if user is not authenticated.
 if (!isset($_SESSION['user'])) {
-    $_SESSION["currUrl"] = "review/" . substr(basename(__FILE__), 0, -4) . "?id=" . $_GET["id"];
-    header("Location: ../user/login.php");
-    exit;
+    $_SESSION["currUrl"] = "review/" . substr(basename(__FILE__), 0, -4);
+    redirect("../user/login.php", "You need to be logged in to perform this operation");
 }
 // Restrict access to page if post does not belong to user
 if ($_SESSION["id"] !== $review["user_id"]) {
@@ -22,6 +24,7 @@ if ($_SESSION["id"] !== $review["user_id"]) {
     <?php
     require_once('../partials/nav.php');
     ?>
+    <!-- Main page content -->
     <div class="container py-5">
         <form class="needs-validation" action="routes/update.php" method="post" novalidate>
             <div class="form-group">
@@ -64,9 +67,9 @@ if ($_SESSION["id"] !== $review["user_id"]) {
             </div>
         </form>
     </div>
-    <script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <?php
-    require_once('../partials/footer.php');
-    ?>
+<script src="https://kit.fontawesome.com/5ea815c1d0.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<?php
+require_once('../partials/footer.php');
+?>
