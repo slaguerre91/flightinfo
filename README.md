@@ -1,5 +1,7 @@
 # Flight Info
 
+![screenshot](/views/assets/screenshot.png)
+
 This full stack web app is a simple review site for airline routes. Users can browse reviews for any airport pair and commercial airline in the world. They can also create an account and post their own reviews. View the deployed version at the following link https://flightinfo.slaguerre.dev
 
 ## Tech Stack
@@ -77,7 +79,7 @@ Once the application is properly configured, the search controller (**controller
 When a user search is made, the controller will populate the route in question with seed reviews if there's less than 2 search results. The airlines, users, review text as well as the volume of seed data are picked at random. This can be turned off by commenting out the below code from the controller:
 
 ```php
-//Create fake reviews if $reviews is empty
+//Create fake reviews if $reviews is empty (or has less than a certain amount of items)
 if (count($searchResults) < 2) {
     require_once('seedreviews.php');
 }
